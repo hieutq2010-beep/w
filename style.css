@@ -1,0 +1,127 @@
+:root {
+    --bg-color: #000000;
+    --card-bg: #111827;
+    --primary: #3b82f6;
+    --text: #f9fafb;
+    --success: #22c55e;
+    --error: #ef4444;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Giữ màn hình vừa khít */
+}
+
+#app {
+    width: 100%;
+    max-width: 500px;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.screen {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* Header & Progress */
+.header { margin-bottom: 20px; }
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #374151;
+    border-radius: 10px;
+}
+#progress-fill {
+    height: 100%;
+    background: var(--primary);
+    width: 0%;
+    transition: width 0.3s;
+}
+
+/* Question Area */
+.question-container {
+    flex-grow: 1;
+    overflow-y: auto; /* Cho phép cuộn nếu câu hỏi quá dài */
+}
+
+h2 {
+    font-size: 1.25rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.options-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.option {
+    background: var(--card-bg);
+    padding: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    border: 1px solid #374151;
+    transition: 0.2s;
+}
+
+.option.correct {
+    background: var(--success);
+    border-color: var(--success);
+    color: white;
+}
+
+.option.wrong {
+    background: var(--error);
+    border-color: var(--error);
+    color: white;
+}
+
+.option.disabled { pointer-events: none; opacity: 0.7; }
+
+/* Buttons */
+button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.hidden { display: none; }
+
+#start-screen h1 { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; text-align: center;}
+#start-screen p { text-align: center; color: #9ca3af; }
+
+.final-score { font-size: 4rem; font-weight: 800; color: var(--primary); text-align: center; margin: 20px 0;}
